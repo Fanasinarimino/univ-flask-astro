@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="auth-container fade-in">
+
+    <h2 class="neon-text text-center mb-4">Créer un compte</h2>
+
+    <form method="POST" class="auth-form">
+
+        <div class="mb-3">
+            <label class="form-label">Nom d'utilisateur</label>
+            <input type="text" name="username" class="form-control glass-input" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control glass-input" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Mot de passe</label>
+            <input type="password" name="password" class="form-control glass-input" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Confirmer le mot de passe</label>
+            <input type="password" name="confirm" class="form-control glass-input" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 mt-3">Créer mon compte</button>
+
+        <p class="text-center mt-3">
+            Déjà un compte ?
+            <a href="{{ url_for('login') }}" class="link-light">Se connecter</a>
+        </p>
+
+    </form>
+
+</div>
+
+{% endblock %}

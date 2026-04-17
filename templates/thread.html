@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4 neon-text">{{ thread.titre }}</h2>
+
+<!-- Messages du fil -->
+<div class="mb-4">
+    {% for p in posts %}
+        <div class="card card-astro forum-card p-3 fade-in">
+
+            <p class="mb-1"><strong>Auteur :</strong> {{ p.user_id }}</p>
+            <p class="mb-1"><strong>Date :</strong> {{ p.date_post }}</p>
+
+            <p class="mt-2">{{ p.contenu }}</p>
+
+        </div>
+    {% endfor %}
+</div>
+
+<!-- Formulaire de réponse -->
+<div class="auth-container fade-in">
+
+    <form method="POST" action="{{ url_for('reply', id=thread.id) }}">
+
+        <label class="form-label">Votre message</label>
+        <textarea name="contenu" class="form-control glass-input mb-3" rows="4" required></textarea>
+
+        <button class="btn btn-primary w-100">Envoyer</button>
+
+    </form>
+
+</div>
+
+{% endblock %}

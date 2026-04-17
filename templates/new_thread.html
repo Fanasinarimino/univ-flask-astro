@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4 neon-text">Créer un nouveau fil</h2>
+
+<div class="auth-container fade-in">
+
+    <form method="POST">
+
+        <label class="form-label">Titre du fil</label>
+        <input type="text" name="titre" class="form-control glass-input mb-3" required>
+
+        <button class="btn btn-primary w-100">Créer</button>
+
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AstroVision</title>
+
+    <!-- Chargement de Bootstrap pour la mise en page responsive -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Polices Google utilisées pour l'identité visuelle futuriste -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Icônes Font Awesome (utilisées dans la navigation et les cartes) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Feuille de style personnalisée du thème AstroVision -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+
+  <body class="bg-space text-light">
+
+    <!-- Barre de navigation principale (affichée sur toutes les pages) -->
+    <nav class="navbar navbar-expand-lg navbar-dark glass-nav mb-4">
+      <div class="container">
+
+        <!-- Logo + lien vers la page d'accueil -->
+        <a class="navbar-brand d-flex align-items-center neon-text" href="{{ url_for('index') }}">
+          <i class="fa-solid fa-galaxy me-2"></i>
+          AstroVision
+        </a>
+
+        <!-- Bouton hamburger pour l'affichage mobile -->
+        <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu dynamique : contenu différent selon l'état de connexion -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+
+            {% if session.user_id %}
+
+              <!-- Liens accessibles uniquement après authentification -->
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('appareils') }}">Appareils</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('photos') }}">Photos</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('telescopes') }}">Télescopes</a>
+              </li>
+
+              <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('forum') }}">Forum</a>
+              </li>
+
+
+              <!-- Menu utilisateur (profil + déconnexion) -->
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle user-menu" href="#" id="userMenu" role="button" data-bs-toggle="dropdown">
+                  <i class="fa-solid fa-user-astronaut"></i> {{ current_user.username }}
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end glass-dropdown">
+                  <li><a class="dropdown-item" href="{{ url_for('profil') }}">Profil</a></li>
+                  <li><a class="dropdown-item text-danger" href="{{ url_for('logout') }}">Déconnexion</a></li>
+                </ul>
+              </li>
+
+            {% else %}
+
+              <!-- Liens affichés pour les visiteurs non connectés -->
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('login') }}">Connexion</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('register') }}">Inscription</a>
+              </li>
+
+            {% endif %}
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Zone d'affichage des messages flash (succès / erreurs) -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="container mt-3">
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} glass-alert fade-in">
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <!-- Bloc de contenu principal (remplacé par chaque page enfant) -->
+    <div class="container fade-in">
+      {% block content %}{% endblock %}
+    </div>
+
+    <!-- Scripts Bootstrap pour les composants interactifs -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

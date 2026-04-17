@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="text-center fade-in">
+    <h2 class="neon-text mb-3">Bienvenue {{ current_user.username }} !</h2>
+    <p class="mb-4">Vous êtes connecté.e et pouvez naviguer dans la communauté.</p>
+
+    <a href="{{ url_for('appareils') }}" class="btn btn-primary m-2">Appareils</a>
+    <a href="{{ url_for('photos') }}" class="btn btn-primary m-2">Photos</a>
+    <a href="{{ url_for('telescopes') }}" class="btn btn-primary m-2">Télescopes</a>
+</div>
+
+{% endblock %}

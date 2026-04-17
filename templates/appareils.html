@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Titre principal de la page dédiée aux appareils photo -->
+<h2 class="mb-4 neon-text">Appareils Photo</h2>
+
+<!-- 
+    Structure générale :
+    La page affiche les appareils photo selon trois catégories fixes :
+    - Amateur
+    - Amateur sérieux
+    - Professionnel
+
+    Pour chaque catégorie, une colonne est générée.
+    À l’intérieur, seuls les appareils correspondant à cette catégorie
+    sont affichés grâce au filtrage dans la boucle interne.
+-->
+<div class="row">
+    {% for cat in ["Amateur", "Amateur sérieux", "Professionnel"] %}
+        <div class="col-md-4 mb-4">
+
+            <!-- Nom de la catégorie affichée dans cette colonne -->
+            <h4 class="mb-3 neon-text">{{ cat }}</h4>
+
+            <!-- 
+                Boucle interne :
+                On parcourt tous les appareils, mais on n'affiche que ceux
+                dont la catégorie correspond à la catégorie en cours.
+                Cela permet une organisation claire et automatique.
+            -->
+            {% for cam in cameras if cam.categorie == cat %}
+                <div class="card card-astro mb-3 p-3 fade-in">
+
+                    <!-- Image de l'appareil photo (chargée depuis /static) -->
+                    <img src="{{ url_for('static', filename=cam.url_image) }}" class="card-img-top mb-3">
+
+                    <!-- Marque + modèle de l'appareil -->
+                    <h5 class="card-title">{{ cam.marque }} {{ cam.modele }}</h5>
+
+                    <!-- Date de sortie de l'appareil -->
+                    <p class="mb-1"><strong>Date de sortie :</strong> {{ cam.date_sortie }}</p>
+
+                    <!-- 
+                        Affichage du score sous forme d'étoiles :
+                        - Étoile pleine si i <= score
+                        - Étoile vide sinon
+                    -->
+                    <p class="mb-2">
+                        <strong>Score :</strong>
+                        {% for i in range(1, 6) %}
+                            {% if i <= cam.score %}
+                                <i class="fa-solid fa-star text-warning"></i>
+                            {% else %}
+                                <i class="fa-regular fa-star text-secondary"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </p>
+
+                    <!-- Badge indiquant la catégorie de l'appareil -->
+                    <span class="badge bg-info">{{ cam.categorie }}</span>
+
+                    <!-- Bouton vers la page de détails de l'appareil -->
+                    <a href="{{ url_for('details_appareil', id=cam.id) }}" class="btn btn-primary mt-3">
+                        Voir détails
+                    </a>
+
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

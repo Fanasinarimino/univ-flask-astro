@@ -1,0 +1,268 @@
+/* ----------------------------------------------------
+   FOND GLOBAL SPATIAL — Dégradé sombre + ambiance cosmos
+-----------------------------------------------------*/
+body.bg-space {
+    background: radial-gradient(circle at 20% 20%, #0a0f2d, #000000 70%);
+    background-attachment: fixed;
+    font-family: 'Inter', sans-serif;
+    color: #e0e6ff;
+}
+
+/* ----------------------------------------------------
+   NAVBAR GLASSMORPHISM — Effet verre + glow bleu
+-----------------------------------------------------*/
+.glass-nav {
+    background: rgba(15, 20, 60, 0.45);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(120, 150, 255, 0.25);
+    box-shadow: 0 0 25px rgba(80, 120, 255, 0.3);
+}
+
+.navbar-brand {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+}
+
+.nav-link {
+    color: #cdd4ff !important;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: #7ab8ff !important;
+    text-shadow: 0 0 8px #7ab8ff;
+}
+
+/* ----------------------------------------------------
+   MENU UTILISATEUR — Icône astronaute + dropdown glass
+-----------------------------------------------------*/
+.user-menu {
+    color: #8fd3ff !important;
+    font-weight: 600;
+}
+
+.glass-dropdown {
+    background: rgba(20, 25, 70, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(120, 150, 255, 0.3);
+}
+
+.glass-dropdown .dropdown-item {
+    color: #dce3ff;
+}
+
+.glass-dropdown .dropdown-item:hover {
+    background: rgba(120, 150, 255, 0.2);
+}
+
+/* ----------------------------------------------------
+   TITRES NÉON — Effet lumineux bleu
+-----------------------------------------------------*/
+.neon-text {
+    color: #9ecbff;
+    text-shadow: 0 0 8px #6aa8ff, 0 0 15px #3d6aff;
+}
+
+/* ----------------------------------------------------
+   CARTES FUTURISTES — Effet verre + hover dynamique
+-----------------------------------------------------*/
+.card-astro {
+    background: rgba(20, 25, 70, 0.35);
+    border: 1px solid rgba(120, 150, 255, 0.25);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(80, 120, 255, 0.15);
+}
+
+.card-astro:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(120, 150, 255, 0.4);
+}
+
+/* ----------------------------------------------------
+   ALERTES GLASS — Messages flash visibles + futuristes
+-----------------------------------------------------*/
+.glass-alert {
+    background: rgba(40, 50, 100, 0.4);
+    border: 1px solid rgba(120, 150, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+/* ----------------------------------------------------
+   ANIMATIONS — Apparition douce
+-----------------------------------------------------*/
+.fade-in {
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ----------------------------------------------------
+   BOUTONS FUTURISTES — Dégradé bleu + glow
+-----------------------------------------------------*/
+.btn-primary {
+    background: linear-gradient(135deg, #4a6bff, #7a9dff);
+    border: none;
+    box-shadow: 0 0 12px rgba(120, 150, 255, 0.5);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #6b8cff, #9abaff);
+    box-shadow: 0 0 18px rgba(150, 180, 255, 0.7);
+}
+
+/* ----------------------------------------------------
+   IMAGES — Affichage propre sans déformation
+-----------------------------------------------------*/
+.photo-card img,
+.card-astro img,
+.card-img-top {
+    width: 100%;
+    height: 230px;
+    object-fit: contain;
+    object-position: center;
+    background-color: #000;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(120, 150, 255, 0.3);
+}
+
+/* ----------------------------------------------------
+   TITRES DES SECTIONS — Style Orbitron + glow
+-----------------------------------------------------*/
+h2, h3, h4 {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    color: #bcd4ff;
+    text-shadow: 0 0 6px #6aa8ff;
+}
+
+/* ----------------------------------------------------
+   PAGE D’ACCUEIL — HERO BANNER futuriste
+-----------------------------------------------------*/
+.hero-home {
+    position: relative;
+    height: 85vh;
+    background-image: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 25px rgba(120, 150, 255, 0.4);
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(5, 10, 30, 0.55);
+    backdrop-filter: blur(2px);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hero-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4.5rem;
+    color: #bcd4ff;
+    text-shadow: 0 0 12px #6aa8ff, 0 0 25px #3d6aff;
+    margin-bottom: 10px;
+}
+
+.hero-subtitle {
+    font-size: 1.7rem;
+    color: #9ecbff;
+    margin-bottom: 30px;
+    text-shadow: 0 0 8px #6aa8ff;
+}
+
+.btn-hero {
+    padding: 14px 32px;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    box-shadow: 0 0 18px rgba(120, 150, 255, 0.6);
+}
+
+/* ----------------------------------------------------
+   FORMULAIRES AUTH — Style glass futuriste
+-----------------------------------------------------*/
+.auth-container {
+    max-width: 450px;
+    margin: auto;
+    padding: 30px;
+    background: rgba(20, 25, 70, 0.35);
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(120, 150, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.glass-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(120, 150, 255, 0.3);
+    color: #e0e6ff;
+}
+
+.glass-input:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #7ab8ff;
+    box-shadow: 0 0 10px rgba(120, 150, 255, 0.5);
+}
+
+/* ----------------------------------------------------
+   ALERTES FLASH — Version finale visible + stylée
+-----------------------------------------------------*/
+.glass-alert {
+    padding: 14px 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    opacity: 1 !important;
+    display: block !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 12px rgba(120, 150, 255, 0.4);
+}
+
+/* Erreur */
+.alert-danger {
+    background: rgba(255, 60, 60, 0.35) !important;
+    border-left: 4px solid #ff4d4d !important;
+    text-shadow: 0 0 6px rgba(255, 80, 80, 0.8);
+}
+
+/* Succès */
+.alert-success {
+    background: rgba(0, 255, 140, 0.25) !important;
+    border-left: 4px solid #00ff88 !important;
+    text-shadow: 0 0 6px rgba(0, 255, 140, 0.8);
+}
+
+/* Animation d’apparition */
+.glass-alert.fade-in {
+    animation: fadeInAlert 0.6s ease-out;
+}
+
+@keyframes fadeInAlert {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Lisibilité renforcée pour les cartes du forum */
+.card-astro.forum-card {
+    background: rgba(10, 15, 40, 0.85) !important;
+    color: #e8eeff !important;
+}

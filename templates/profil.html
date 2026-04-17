@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container fade-in">
+    <h2 class="mb-4 neon-text">Profil utilisateur</h2>
+
+    <div class="card card-astro p-4">
+        <h3 class="mb-3"><i class="fa-solid fa-user-astronaut"></i> {{ user.username }}</h3>
+
+        <p><strong>Email :</strong> {{ user.email }}</p>
+
+        <p><strong>ID utilisateur :</strong> {{ user.id }}</p>
+
+        <p class="mt-3 text-info">
+            Bienvenue dans votre espace personnel futuriste.
+        </p>
+
+        <a href="{{ url_for('index') }}" class="btn btn-primary mt-3">Retour</a>
+    </div>
+</div>
+
+{% endblock %}

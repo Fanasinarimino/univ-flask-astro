@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Titre principal de la page dédiée aux photographies -->
+<h2 class="mb-4 neon-text">Photographies</h2>
+
+<!-- 
+    Affichage de toutes les photographies enregistrées dans la base de données.
+    Chaque élément de la liste "photos" correspond à une photo stockée localement
+    dans le dossier /static, avec son titre associé.
+-->
+<div class="row">
+    {% for p in photos %}
+        <div class="col-md-4 mb-4">
+
+            <!-- Carte individuelle contenant une photographie -->
+            <div class="card card-astro photo-card">
+
+                <!-- Image de la photographie (chargée depuis /static) -->
+                <img src="{{ url_for('static', filename=p.url_image) }}" 
+                     class="card-img-top" 
+                     alt="{{ p.titre }}">
+
+                <!-- Corps de la carte : affichage du titre de la photo -->
+                <div class="card-body">
+                    <h5 class="card-title">{{ p.titre }}</h5>
+                </div>
+
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

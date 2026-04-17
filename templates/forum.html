@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="mb-4 neon-text">Forum Astronomie</h2>
+
+<!-- Bouton pour créer un nouveau fil -->
+<a href="{{ url_for('new_thread') }}" class="btn btn-primary mb-4">Créer un nouveau fil</a>
+
+<!-- Liste des fils -->
+<div class="row">
+    {% for th in threads %}
+        <div class="col-md-12 mb-3">
+            <div class="card card-astro forum-card p-3 fade-in">
+
+                <h4 class="neon-text">{{ th.titre }}</h4>
+
+                <p class="mb-1">
+                    <strong>Auteur :</strong> {{ th.user_id }}
+                </p>
+
+                <p class="mb-2">
+                    <strong>Créé le :</strong> {{ th.date_creation }}
+                </p>
+
+                <!-- Bouton vers le fil -->
+                <a href="{{ url_for('thread', id=th.id) }}" class="btn btn-primary mt-2">
+                    Ouvrir le fil
+                </a>
+
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

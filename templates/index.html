@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="hero-home">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content text-center">
+        <h1 class="hero-title">AstroVision</h1>
+        <p class="hero-subtitle">Explore the Universe</p>
+
+        {% if not session.user_id %}
+            <a href="{{ url_for('login') }}" class="btn btn-primary btn-hero">
+                Entrer dans l’Observatoire
+            </a>
+        {% else %}
+            <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-hero">
+                Entrer dans l’Observatoire
+            </a>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Titre principal -->
+<h2 class="mb-4 neon-text">Détails de l'appareil photo</h2>
+
+<!-- Carte détaillée de l'appareil -->
+<div class="card card-astro p-4 fade-in">
+
+    <!-- Image principale -->
+    <img src="{{ url_for('static', filename=appareil.url_image) }}" 
+         class="card-img-top mb-4" 
+         alt="{{ appareil.marque }} {{ appareil.modele }}">
+
+    <!-- Informations principales -->
+    <h3 class="neon-text">{{ appareil.marque }} {{ appareil.modele }}</h3>
+
+    <p><strong>Date de sortie :</strong> {{ appareil.date_sortie }}</p>
+
+    <!-- Score affiché en étoiles -->
+    <p>
+        <strong>Score :</strong>
+        {% for i in range(1, 6) %}
+            {% if i <= appareil.score %}
+                <i class="fa-solid fa-star text-warning"></i>
+            {% else %}
+                <i class="fa-regular fa-star text-secondary"></i>
+            {% endif %}
+        {% endfor %}
+    </p>
+
+    <p><strong>Catégorie :</strong> {{ appareil.categorie }}</p>
+
+    <!-- Bouton retour -->
+    <a href="{{ url_for('appareils') }}" class="btn btn-primary mt-3">Retour</a>
+
+</div>
+
+{% endblock %}

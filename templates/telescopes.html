@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- Titre principal de la page dédiée aux télescopes -->
+<h2 class="mb-4 neon-text">Télescopes</h2>
+
+<!-- 
+    Structure générale :
+    La page classe les télescopes en trois catégories fixes :
+    - Enfants
+    - Automatisés
+    - Complets
+
+    Pour chaque catégorie, une colonne est générée.
+    À l’intérieur, seuls les télescopes correspondant à cette catégorie
+    sont affichés grâce au filtrage dans la boucle interne.
+-->
+<div class="row">
+    {% for cat in ["Enfants", "Automatisés", "Complets"] %}
+        <div class="col-md-4 mb-4">
+
+            <!-- Titre de la catégorie affichée dans cette colonne -->
+            <h4 class="mb-3 neon-text">{{ cat }}</h4>
+
+            <!-- 
+                Boucle interne :
+                On parcourt tous les télescopes, mais on n'affiche que ceux
+                dont la catégorie correspond à la catégorie en cours.
+                Cela permet une organisation claire et automatique.
+            -->
+            {% for t in telescopes if t.categorie == cat %}
+                <div class="card card-astro mb-3 p-3 fade-in">
+
+                    <!-- Image du télescope (chargée depuis /static) -->
+                    <img src="{{ url_for('static', filename=t.url_image) }}" class="card-img-top mb-3">
+
+                    <!-- Marque + modèle du télescope -->
+                    <h5 class="card-title">{{ t.marque }} {{ t.modele }}</h5>
+
+                    <!-- Date de sortie du modèle -->
+                    <p class="mb-1"><strong>Date de sortie :</strong> {{ t.date_sortie }}</p>
+
+                    <!-- 
+                        Affichage du score sous forme d'étoiles :
+                        - Étoile pleine si i <= score
+                        - Étoile vide sinon
+                    -->
+                    <p class="mb-2">
+                        <strong>Score :</strong>
+                        {% for i in range(1, 6) %}
+                            {% if i <= t.score %}
+                                <i class="fa-solid fa-star text-warning"></i>
+                            {% else %}
+                                <i class="fa-regular fa-star text-secondary"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </p>
+
+                    <!-- Badge indiquant la catégorie du télescope -->
+                    <span class="badge bg-info">{{ t.categorie }}</span>
+
+                    <!-- Bouton vers la page de détails du télescope -->
+                    <a href="{{ url_for('details_telescope', id=t.id) }}" class="btn btn-primary mt-3">
+                        Voir détails
+                    </a>
+
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
